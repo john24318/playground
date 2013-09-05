@@ -1,0 +1,57 @@
+!!!
+html(ng-app="myApp")
+  head
+    meta(charset='utf8')
+    base(href='/')
+    title 感想文產生器Beta
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/app.css')
+  body
+    nav.navbar.navbar-default(role='navigation')
+      .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand.letter-space(href='#') 感想文產生器
+      //- Collect the nav links, forms, and other content for toggling
+      .collapse.navbar-collapse.navbar-ex1-collapse(ng-controller='NavCtrl')
+        ul.nav.navbar-nav
+          li.active
+            a(href='view1', data-original-title='我的文章')
+              span.glyphicon.glyphicon-user
+          li
+            a(href='view2', data-original-title='增加範本') 
+              span.glyphicon.glyphicon-comment
+          li
+            a(href='view3', data-original-title='詞彙一覽') 
+              span.glyphicon.glyphicon-list
+        
+        ul.nav.navbar-nav.navbar-right
+          form.navbar-form.navbar-left(role='search')
+            .form-group
+              input.form-control(type='text', placeholder='搜尋範本')
+            button.btn.btn-default(type='submit') 
+              span.glyphicon.glyphicon-search
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | 我是{{user_occupation.text || '...'}}
+              b.caret
+            ul.dropdown-menu(style='max-height:300px;overflow:auto;')
+              li(ng-repeat='occupation in occupations')
+                a(href='#', ng-click='set_occupation()') {{occupation.text}}
+              li.divider
+              li
+                a(href='#')
+                  span.glyphicon.glyphicon-plus
+                  span  增加職業別
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | 年齡 {{user_age}} 歲
+              b.caret
+            ul.dropdown-menu(style='min-width:100px;max-height:300px;overflow:auto;')
+              li(ng-repeat='age in ages')
+                a(href='', ng-click='set_age()') {{age}} 歲
+      //- navbar-collapse
+    block body

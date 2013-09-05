@@ -1,0 +1,26 @@
+extends layout
+
+block body
+  .container      
+    div(ng-controller='AppCtrl')
+      .jumbotron.promo-cover
+        h1 Hello {{name}}
+        p.letter-space 時間就是金錢，別再為無聊的作業爆肝！感想文產生器讓您把握更多美好時光 :)
+      div(ng-view)
+    hr  
+    div
+      | Angular seed app: v
+      span(app-version)
+    div
+      | xx 的職業別已有 oo 句詞彙。
+
+  script(src='js/lib/angular/angular.js')
+  script(src='js/app.js')
+  script(src='js/services.js')
+  script(src='js/controllers.js')
+  script(src='js/filters.js')
+  script(src='js/directives.js')
+  script(src='js/lib/jquery/jquery-2.0.3.min.js')
+  script(src='bootstrap/js/bootstrap.min.js')
+  //- 即時測試jQuery
+  script(src='js/test.js')
