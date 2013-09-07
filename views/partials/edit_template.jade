@@ -1,0 +1,7 @@
+.input-group
+  input.form-control(type='text', ng-model="occupation.text", required)
+  span.input-group-btn
+    button.btn.btn-success(type='button', style='padding:6px 8px;', ng-click='edit_done()')
+      span.glyphicon.glyphicon-ok
+    button.btn.btn-default(type='button', style='padding:6px 8px;', ng-click='edit_cancel()')
+      span.glyphicon.glyphicon-remove

@@ -16,6 +16,7 @@ exports.occupations = function (req, res) {
     {id:3, text:'公務人員'}];
 
   res.json({
-  	occupations: occupations
+  	occupations: occupations,
+    current_id: 3
   });
 };

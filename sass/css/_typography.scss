@@ -7,7 +7,7 @@ body {
   font-family: $font-family-style;
 }
 
-.promo-cover {
+.bgw-cover {
   background-attachment: scroll;
   background-clip: border-box;
   background-color: rgba(0, 0, 0, 0);
@@ -34,4 +34,12 @@ body {
     opacity: 0.9;
     width: 18em;
   }
+}
+
+.bgw-footer {
+  border-top: 1px solid #E5E5E5;
+  color: #777777;
+  margin-top: 70px;
+  padding: 30px 0;
+  text-align: left;
 }

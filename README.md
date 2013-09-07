@@ -1,4 +1,10 @@
-<<<<<<< HEAD
+=======
+playground
+==========
+
+use Angular.js for fun
+
+
 # Angular Express Bootstrap Seed
 
 Forked from [btford/angular-express-seed](https://github.com/btford/angular-express-seed) and spiced with [Twitter Bootstrap](https://github.com/twitter/bootstrap). jQuery added for convenience.
@@ -81,11 +87,4 @@ A simple [blog](https://github.com/btford/angular-express-blog) based on this se
 ## Contact
 
 For more information on AngularJS please check out http://angularjs.org/
-For more on Express and Jade, http://expressjs.com/ and http://jade-lang.com/ are
-your friends.
-=======
-playground
-==========
-
-use Angular.js for fun
->>>>>>> e962b791dd03b9ea1ad8ddb0b9148b1e91bab52e
+For more on Express and Jade, http://expressjs.com/ and http://jade-lang.com/ are your friends.

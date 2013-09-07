@@ -6,26 +6,30 @@ html(ng-app="myApp")
     title 感想文產生器Beta
     link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', href='/css/app.css')
+    script(src='js/lib/angular/angular.js')
+    script(src='js/lib/jquery/jquery-2.0.3.min.js')
+    script(src='bootstrap/js/bootstrap.min.js')
+    block script
   body
-    nav.navbar.navbar-default(role='navigation')
+    nav.navbar.navbar-default(role='navigation', ng-controller='NavCtrl')
       .navbar-header
         button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
           span.sr-only Toggle navigation
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand.letter-space(href='#') 感想文產生器
+        a.navbar-brand.letter-space(href='/', ng-click='set_active("index")') 感想文產生器
       //- Collect the nav links, forms, and other content for toggling
-      .collapse.navbar-collapse.navbar-ex1-collapse(ng-controller='NavCtrl')
+      .collapse.navbar-collapse.navbar-ex1-collapse
         ul.nav.navbar-nav
-          li.active
-            a(href='view1', data-original-title='我的文章')
+          li(ng-click='set_active("article")', ng-class='{active: is_selected("article")}')
+            a(href='article', data-original-title='我的文章')
               span.glyphicon.glyphicon-user
-          li
-            a(href='view2', data-original-title='增加範本') 
+          li(ng-click='set_active("contribute")', ng-class='{active: is_selected("contribute")}')
+            a(href='contribute', data-original-title='增加範本') 
               span.glyphicon.glyphicon-comment
-          li
-            a(href='view3', data-original-title='詞彙一覽') 
+          li(ng-click='set_active("dictionary")', ng-class='{active: is_selected("dictionary")}')
+            a(href='dictionary', data-original-title='詞彙一覽') 
               span.glyphicon.glyphicon-list
         
         ul.nav.navbar-nav.navbar-right
@@ -35,23 +39,31 @@ html(ng-app="myApp")
             button.btn.btn-default(type='submit') 
               span.glyphicon.glyphicon-search
           li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
+            a.dropdown-toggle(href='{{location.absUrl()}}#', data-toggle='dropdown')
               | 我是{{user_occupation.text || '...'}}
               b.caret
             ul.dropdown-menu(style='max-height:300px;overflow:auto;')
               li(ng-repeat='occupation in occupations')
-                a(href='#', ng-click='set_occupation()') {{occupation.text}}
+                a(href='{{location.absUrl()}}#', ng-click='set_occupation()') {{occupation.text}}
               li.divider
-              li
-                a(href='#')
+              li(ng-switch, on='edit_occupation', stop-event)
+                div(ng-switch-when='true', ng-include='\'partial/edit_template\'')
+                a(ng-switch-default, href='{{location.absUrl()}}#', ng-click='add_occupation(true)')
                   span.glyphicon.glyphicon-plus
-                  span  增加職業別
+                  span 增加職業別
           li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
+            a.dropdown-toggle(href='{{location.absUrl()}}#', data-toggle='dropdown')
               | 年齡 {{user_age}} 歲
               b.caret
             ul.dropdown-menu(style='min-width:100px;max-height:300px;overflow:auto;')
               li(ng-repeat='age in ages')
-                a(href='', ng-click='set_age()') {{age}} 歲
+                a(href='{{location.absUrl()}}#', ng-click='set_age()') {{age}} 歲
       //- navbar-collapse
     block body
+  footer.bgw-footer
+    .container
+      div
+        | Angular seed app: v
+        span(app-version)
+      div
+        | xx 的職業別已有 oo 句詞彙。
