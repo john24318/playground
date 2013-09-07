@@ -1,5 +1,4 @@
-=======
-playground
+About playground
 ==========
 
 use Angular.js for fun
