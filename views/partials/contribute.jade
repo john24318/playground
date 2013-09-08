@@ -1,6 +1,10 @@
 .row
 	.col-lg-12
-		p This is the partial for contribute.
-		p
-			| Showing of 'interpolate' filter:
-			| {{ 'Current version is v%VERSION%.' | interpolate }}
+		form
+			p 想要貢獻一己之力嗎？上傳文章讓我們的詞彙更加豐富：
+			textarea.form-control(style='width:100%;min-width:200px;height:200px;')
+			button.btn.btn-primary(type='submit', style='margin:1em 0;') 上傳文章
+		
+		//- p
+		//- 	| Showing of 'interpolate' filter:
+		//- 	| {{ 'Current version is v%VERSION%.' | interpolate }}

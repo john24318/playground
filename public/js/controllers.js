@@ -14,7 +14,7 @@ function NavCtrl($scope, $http) {
   $http({method: 'GET', url: '/api/occupations'}).
   success(function(data, status, headers, config) {
     $scope.occupations = data.occupations;
-    $scope.current_id = data.current_id
+    $scope.current_id = data.current_id;
   }).
   error(function(data, status, headers, config) {
     $scope.occupations = null;
@@ -25,6 +25,11 @@ function NavCtrl($scope, $http) {
   };
 
   $scope.edit_done = function(){
+    if($scope.occupation.text == undefined){
+      $scope.edit_occupation = false;
+      return false;
+    }
+
     $scope.occupation.id = ++$scope.current_id;
     var clone = angular.copy($scope.occupation);
     $scope.occupations.push(clone);
@@ -53,6 +58,8 @@ function NavCtrl($scope, $http) {
 }
 
 function AppCtrl($scope, $http) {
+  $scope.user_filters = [];
+
   $http({method: 'GET', url: '/api/name'}).
   success(function(data, status, headers, config) {
     $scope.name = data.name;
@@ -60,6 +67,25 @@ function AppCtrl($scope, $http) {
   error(function(data, status, headers, config) {
     $scope.name = 'Error!'
   });
+
+  //get categories
+  $http({method: 'GET', url: '/api/categories'}).
+  success(function(data, status, headers, config) {
+    $scope.categories = data.categories;
+  }).
+  error(function(data, status, headers, config) {
+    $scope.categories = null;
+  });
+  
+  $scope.add_filter_category = function(category){
+    if($scope.user_filters.indexOf(category) == -1)
+      $scope.user_filters.push(category);
+  }
+
+  $scope.remove_filter_category = function(category){
+    var index = $scope.user_filters.indexOf(category);
+    $scope.user_filters.splice(index, 1);
+  }
 }
 
 function MyCtrl1() {}
@@ -69,3 +95,13 @@ MyCtrl1.$inject = [];
 function MyCtrl2() {
 }
 MyCtrl2.$inject = [];
+
+
+function SearchCtrl() {
+}
+SearchCtrl.$inject = [];
+
+
+function AdminCtrl() {
+}
+AdminCtrl.$inject = [];

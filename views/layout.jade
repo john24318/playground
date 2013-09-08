@@ -27,10 +27,13 @@ html(ng-app="myApp")
               span.glyphicon.glyphicon-user
           li(ng-click='set_active("contribute")', ng-class='{active: is_selected("contribute")}')
             a(href='contribute', data-original-title='增加範本') 
-              span.glyphicon.glyphicon-comment
+              span.glyphicon.glyphicon-edit
           li(ng-click='set_active("dictionary")', ng-class='{active: is_selected("dictionary")}')
             a(href='dictionary', data-original-title='詞彙一覽') 
-              span.glyphicon.glyphicon-list
+              span.glyphicon.glyphicon-book
+          li(ng-click='set_active("contact")', ng-class='{active: is_selected("contact")}')
+            a(href='contact', data-original-title='建議事項') 
+              span.glyphicon.glyphicon-comment
         
         ul.nav.navbar-nav.navbar-right
           form.navbar-form.navbar-left(role='search')
@@ -62,8 +65,9 @@ html(ng-app="myApp")
     block body
   footer.bgw-footer
     .container
-      div
-        | Angular seed app: v
-        span(app-version)
-      div
+      div.pull-left
         | xx 的職業別已有 oo 句詞彙。
+      div.pull-right
+        | 2013 ©感想文產生器: v
+        span(app-version)
+      

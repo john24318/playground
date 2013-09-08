@@ -1,4 +1,111 @@
 .row
 	.col-lg-12
-		p This is the partial for dictionary.
-		a(href='index', ng-click='expression') back
+		p 感想文產生器的詞庫是共同編輯的，歡迎您幫忙分類：
+		.panel.panel-default
+			.panel-heading 詞彙一覽
+			table.table.table-condensed(style='border-collapse:collapse;')
+				thead
+					tr
+						th(width='5%') #
+						th(width='5%') id
+						th(width='25%') 類別
+						th(width='65%') 說明
+				tbody
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun0')
+						td 0
+						td 0
+						td
+							|代名詞 
+							span.badge 10
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							div#noun0.accordian-body.collapse
+								.confirm 已收錄：你、我、他、你們、我們、他們、大家、所有人、有些人、這些人
+								.unsure 尚未確定：無
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun1')
+						td 1
+						td 1
+						td
+							|色情 
+							span.badge 1
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+
+							div#noun1.accordian-body.collapse
+								.confirm 已收錄：做愛
+								.unsure 尚未確定：
+								.btn-group(style='margin:0.5em;')
+									button.btn.btn-default(type='button') 魚水之歡
+									button.btn.btn-default.dropdown-toggle(data-toggle='dropdown', type='button')
+										span.caret
+									ul.dropdown-menu(role='menu')
+										li
+											a(href='#') 同意加到這個類別
+										li
+											a(href='#') 建議從這個類別移除
+										li
+											a(href='#') 建議加到其他類別
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun2')
+						td 2
+						td 2
+						td 髒話
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#noun2.accordian-body.collapse Demo2
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun3')
+						td 3
+						td 3
+						td 政治
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#noun3.accordian-body.collapse Demo3
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun4')
+						td 4
+						td 4
+						td 人名
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#noun4.accordian-body.collapse Demo4
+			.panel-heading 句型一覽
+			table.table.table-condensed(style='border-collapse:collapse;')
+				thead
+					tr
+						th(width='5%') #
+						th(width='5%') id
+						th(width='25%') 類別
+						th(width='65%') 說明
+				tbody
+					tr.accordion-toggle(data-toggle='collapse', data-target='#syntax1')
+						td 1
+						td 1
+						td 直述句
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#syntax1.accordian-body.collapse	Demo1 
+					tr.accordion-toggle(data-toggle='collapse', data-target='#syntax2')
+						td 2
+						td 2
+						td 詢問句
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#syntax2.accordian-body.collapse Demo2
+					tr.accordion-toggle(data-toggle='collapse', data-target='#syntax3')
+						td 3
+						td 3
+						td 引述句
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#syntax3.accordian-body.collapse Demo3
+		p 分類條件：10人以上建議分類
+		p 收錄條件：100人以上有65%同意收錄
+		p 參考資料：
+			a(href='http://edu.ocac.gov.tw/culture/biweekly/99common/') http://edu.ocac.gov.tw/culture/biweekly/99common/
+		a.btn.btn-primary(href='/') 回到首頁

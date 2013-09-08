@@ -1,4 +1,32 @@
 .row
 	.col-lg-12
-		p This is the partial for article.
-		p 避免產生下列詞彙：色情、髒話、政治
+		.panel.panel-default
+			.panel-heading
+				.row
+					.col-lg-6
+						p 1. 避免產生下列詞彙：
+						.btn-group(style='padding-right:1em;')
+							button.btn.btn-default.dropdown-toggle(data-toggle='dropdown')
+								| 增加 
+								span.caret
+							ul.dropdown-menu(style='max-height:300px;overflow:auto;')
+								li(ng-repeat='category in categories')
+									a(href='{{location.absUrl()}}#', ng-click='add_filter_category(category)') {{category.text}}
+						span#categoriy_filter
+							sapn.label(style='font-size:1em;margin-right:0.5em;', ng-repeat='category in user_filters', ng-class='\'label-\' + category.class')
+								| {{category.text}}
+								button.close(type='button', data-dismiss='alert', aria-hidden='true', style='float:none;font-size:1.2em;', ng-click='remove_filter_category(category)') &times;
+					.col-lg-6
+						p 2. 選擇字數：
+						ul.pagination(style='margin:0;')
+							li.active
+								a(href='{{location.absUrl()}}#') 少
+									span.sr-only (current)
+							li
+								a(href='{{location.absUrl()}}#') 中
+							li
+								a(href='{{location.absUrl()}}#') 多
+						button.btn.btn-primary.pull-right(type='submit') 產生文章
+			.panel-body
+				| 文章將產生在這裡...
+			

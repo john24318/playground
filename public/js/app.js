@@ -9,6 +9,8 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives'])
     $routeProvider.when('/article', {templateUrl: 'partial/article', controller: MyCtrl1});
     $routeProvider.when('/contribute', {templateUrl: 'partial/contribute', controller: MyCtrl2});
     $routeProvider.when('/dictionary', {templateUrl: 'partial/dictionary', controller: MyCtrl2});
+    $routeProvider.when('/contact', {templateUrl: 'partial/contact', controller: MyCtrl2});
+    $routeProvider.when('/search', {templateUrl: 'partial/search', controller: MyCtrl2});
     $routeProvider.otherwise({redirectTo: '/'});
     $locationProvider.html5Mode(true);
   }]).
