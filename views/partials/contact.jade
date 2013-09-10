@@ -1,0 +1,59 @@
+.row
+	.col-lg-6
+		.panel.panel-default(contact-focus)
+			.panel-heading 我有建議事項：
+			.panel-body
+				form.bs-example.form-horizontal
+					.form-group
+						label.col-lg-2.control-label(for='inputName') 您的大名
+						.col-lg-10
+							input#inputName.form-control(type='text', ng-model="user_name", required)
+					.form-group
+						label.col-lg-2.control-label(for='inputRating') 評個分吧
+						.col-lg-10
+							div#inputRating(style='height:34px;line-height:1.42857;padding: 6px 0;')
+								ul.list-inline
+									li(style='padding:0;')
+										a(href='{{location.absUrl()}}#')
+											span.glyphicon.glyphicon-star-empty(rating-hover, data-rating='1')
+									li(style='padding:0;')
+										a(href='{{location.absUrl()}}#')
+											span.glyphicon.glyphicon-star-empty(rating-hover, data-rating='2')
+									li(style='padding:0;')
+										a(href='{{location.absUrl()}}#')
+											span.glyphicon.glyphicon-star-empty(rating-hover, data-rating='3')
+									li(style='padding:0;')
+										a(href='{{location.absUrl()}}#')
+											span.glyphicon.glyphicon-star-empty(rating-hover, data-rating='4')
+									li(style='padding:0;')
+										a(href='{{location.absUrl()}}#')
+											span.glyphicon.glyphicon-star-empty(rating-hover, data-rating='5')
+									li
+										div {{user_rating|rating}}
+					.form-group
+						label.col-lg-2.control-label(for='inputComment') 留下評語
+						.col-lg-10
+							textarea#inputComment.form-control(ng-model="user_comment", style='width:100%;min-width:200px;height:200px;resize:none;')
+					.form-group
+						.col-lg-offset-2.col-lg-10
+							button.btn.btn-default(ng-submit='send_comment()') 送出
+	.col-lg-6
+		.panel.panel-default(contact-focus)
+			.panel-heading 我想成為管理員：
+			.panel-body
+				form.bs-example.form-horizontal
+					.form-group
+						label.col-lg-3.control-label(for='inputEmail') 您的Email
+						.col-lg-9
+							input#inputEmail.form-control(type='email', placehold='您的Email', ng-model="user.email", required)
+					.form-group
+						label.col-lg-3.control-label(for='inputPassword') 輸入密碼
+						.col-lg-9
+							input#inputPassword.form-control(type='password', placehold='輸入密碼', ng-model="user.password", required)
+					.form-group
+						label.col-lg-3.control-label(for='inputPasswordConfirm') 再輸入一次密碼
+						.col-lg-9
+							input#inputPasswordConfirm.form-control(type='password', placehold='再輸入一次密碼', ng-model="user.password_confirm", required)
+					.form-group
+						.col-lg-offset-3.col-lg-9
+							button.btn.btn-default(ng-submit='user_register()') 註冊

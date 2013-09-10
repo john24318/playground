@@ -23,22 +23,22 @@ html(ng-app="myApp")
       .collapse.navbar-collapse.navbar-ex1-collapse
         ul.nav.navbar-nav
           li(ng-click='set_active("article")', ng-class='{active: is_selected("article")}')
-            a(href='article', data-original-title='我的文章')
+            a(href='article', data-original-title='我的文章', icon-hover)
               span.glyphicon.glyphicon-user
           li(ng-click='set_active("contribute")', ng-class='{active: is_selected("contribute")}')
-            a(href='contribute', data-original-title='增加範本') 
+            a(href='contribute', data-original-title='增加範本', icon-hover) 
               span.glyphicon.glyphicon-edit
           li(ng-click='set_active("dictionary")', ng-class='{active: is_selected("dictionary")}')
-            a(href='dictionary', data-original-title='詞彙一覽') 
+            a(href='dictionary', data-original-title='詞彙一覽', icon-hover) 
               span.glyphicon.glyphicon-book
           li(ng-click='set_active("contact")', ng-class='{active: is_selected("contact")}')
-            a(href='contact', data-original-title='建議事項') 
+            a(href='contact', data-original-title='建議事項', icon-hover) 
               span.glyphicon.glyphicon-comment
         
         ul.nav.navbar-nav.navbar-right
           form.navbar-form.navbar-left(role='search')
             .form-group
-              input.form-control(type='text', placeholder='搜尋範本')
+              input.form-control(type='text', placeholder='搜尋範本', required)
             button.btn.btn-default(type='submit') 
               span.glyphicon.glyphicon-search
           li.dropdown

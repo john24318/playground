@@ -1,0 +1,11 @@
+.btn-group(style='margin:0.5em;')
+	button.btn.btn-default(type='button') {{unsure_word}}
+	button.btn.btn-default.dropdown-toggle(data-toggle='dropdown', type='button')
+		span.caret
+	ul.dropdown-menu(role='menu')
+		li
+			a(href='{{location.absUrl()}}#') 同意加到這個類別
+		li
+			a(href='{{location.absUrl()}}#') 建議從這個類別移除
+		li
+			a(href='{{location.absUrl()}}#') 建議加到其他類別

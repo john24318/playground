@@ -19,27 +19,6 @@ function NavCtrl($scope, $http) {
   error(function(data, status, headers, config) {
     $scope.occupations = null;
   });
-  
-  $scope.add_occupation = function(isEdit){
-      $scope.edit_occupation = isEdit;
-  };
-
-  $scope.edit_done = function(){
-    if($scope.occupation.text == undefined){
-      $scope.edit_occupation = false;
-      return false;
-    }
-
-    $scope.occupation.id = ++$scope.current_id;
-    var clone = angular.copy($scope.occupation);
-    $scope.occupations.push(clone);
-    $scope.user_occupation = clone;
-    $scope.occupation = {};
-    $scope.edit_occupation = false;
-  }
-  $scope.edit_cancel = function(){
-    $scope.edit_occupation = false;
-  }
 
   $scope.set_age = function(){
       $scope.user_age = this.age;
@@ -55,7 +34,31 @@ function NavCtrl($scope, $http) {
   $scope.is_selected = function(section) {
     return $scope.selected === section;
   }
+
+  //add occupation
+  $scope.add_occupation = function(isEdit){
+      $scope.edit_occupation = isEdit;
+  };
+
+  $scope.edit_done = function(){
+    if(this.input_text == undefined){
+      $scope.edit_occupation = false;
+      return false;
+    }
+    $scope.occupation.text = this.input_text;
+    $scope.occupation.id = ++$scope.current_id;
+    var clone = angular.copy($scope.occupation);
+    $scope.occupations.push(clone);
+    $scope.user_occupation = clone;
+    $scope.occupation = {};
+    $scope.edit_occupation = false;
+  }
+
+  $scope.edit_cancel = function(){
+    $scope.edit_occupation = false;
+  }
 }
+
 
 function AppCtrl($scope, $http) {
   $scope.user_filters = [];
@@ -68,7 +71,7 @@ function AppCtrl($scope, $http) {
     $scope.name = 'Error!'
   });
 
-  //get categories
+  //article: get categories
   $http({method: 'GET', url: '/api/categories'}).
   success(function(data, status, headers, config) {
     $scope.categories = data.categories;
@@ -86,6 +89,17 @@ function AppCtrl($scope, $http) {
     var index = $scope.user_filters.indexOf(category);
     $scope.user_filters.splice(index, 1);
   }
+
+  $scope.send_comment = function(){
+
+  }
+
+  $scope.user_register = function(){
+    if($scope.user.email != $scope.user.email_confirm){
+      return false;
+    }
+  }
+
 }
 
 function MyCtrl1() {}

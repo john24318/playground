@@ -2,7 +2,30 @@
 	.col-lg-12
 		p 感想文產生器的詞庫是共同編輯的，歡迎您幫忙分類：
 		.panel.panel-default
-			.panel-heading 詞彙一覽
+			.panel-heading(style='line-height:2em;') 尚未分類
+			table.table.table-condensed(style='border-collapse:collapse;')
+				tbody
+					tr.accordion-toggle(data-toggle='collapse', data-target='#unsure')
+						td
+							|還有 
+							span.badge 1 
+							|  個詞彙
+					tr
+						td.hiddenRow
+							div#unsure.accordian-body.collapse
+								.btn-group(style='margin:0.5em;')
+									button.btn.btn-default(type='button') asd
+									button.btn.btn-default.dropdown-toggle(data-toggle='dropdown', type='button')
+										span.caret
+									ul.dropdown-menu(role='menu')
+										li
+											a(href='#') 建議從這個類別移除
+										li
+											a(href='#') 建議加到其他類別
+			.panel-heading
+				.pull-left(style='line-height:2em;') 詞彙一覽
+				button.btn.btn-primary.btn-sm.pull-right 增加詞彙
+				.clearfix
 			table.table.table-condensed(style='border-collapse:collapse;')
 				thead
 					tr
@@ -16,13 +39,12 @@
 						td 0
 						td
 							|代名詞 
-							span.badge 10
 						td.text-success Credit Account
 					tr
 						td.hiddenRow(colspan='4')
 							div#noun0.accordian-body.collapse
-								.confirm 已收錄：你、我、他、你們、我們、他們、大家、所有人、有些人、這些人
-								.unsure 尚未確定：無
+								.text-success(style='padding:5px 5px 0 5px') 已收錄：
+								div(style='padding:0 5px 5px 5px') 你、我、他、你們、我們、他們、大家、所有人、有些人、這些人
 					tr.accordion-toggle(data-toggle='collapse', data-target='#noun1')
 						td 1
 						td 1
@@ -32,21 +54,13 @@
 						td.text-success Credit Account
 					tr
 						td.hiddenRow(colspan='4')
-
 							div#noun1.accordian-body.collapse
-								.confirm 已收錄：做愛
-								.unsure 尚未確定：
-								.btn-group(style='margin:0.5em;')
-									button.btn.btn-default(type='button') 魚水之歡
-									button.btn.btn-default.dropdown-toggle(data-toggle='dropdown', type='button')
-										span.caret
-									ul.dropdown-menu(role='menu')
-										li
-											a(href='#') 同意加到這個類別
-										li
-											a(href='#') 建議從這個類別移除
-										li
-											a(href='#') 建議加到其他類別
+								.text-success(style='padding:5px 5px 0 5px') 已收錄：
+								div(style='padding:0 5px 5px 5px') 做愛
+								.text-warning(style='padding:0 5px 0 5px') 尚未確定：
+								unsure-template(text='魚水之歡')
+								unsure-template(text='Fuck')
+
 					tr.accordion-toggle(data-toggle='collapse', data-target='#noun2')
 						td 2
 						td 2
@@ -71,7 +85,10 @@
 					tr
 						td.hiddenRow(colspan='4')
 							p#noun4.accordian-body.collapse Demo4
-			.panel-heading 句型一覽
+			.panel-heading
+				.pull-left(style='line-height:2em;') 句型一覽
+				button.btn.btn-primary.btn-sm.pull-right 增加句型
+				.clearfix
 			table.table.table-condensed(style='border-collapse:collapse;')
 				thead
 					tr
@@ -105,7 +122,7 @@
 						td.hiddenRow(colspan='4')
 							p#syntax3.accordian-body.collapse Demo3
 		p 分類條件：10人以上建議分類
-		p 收錄條件：100人以上有65%同意收錄
+		p 收錄條件：500人以上同意收錄，或100人以上且有65%同意收錄
 		p 參考資料：
 			a(href='http://edu.ocac.gov.tw/culture/biweekly/99common/') http://edu.ocac.gov.tw/culture/biweekly/99common/
 		a.btn.btn-primary(href='/') 回到首頁
