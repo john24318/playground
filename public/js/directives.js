@@ -3,6 +3,7 @@
 /* Directives */
 
 var app = angular.module('myApp.directives', []);
+
 app.directive('appVersion', ['version', function(version) {
   return function(scope, element, attrs) {
     element.text(version);
@@ -80,14 +81,68 @@ app.directive('ratingHover', function () {
   };
 });
 
-app.directive('unsureTemplate', function () {
+// app.directive('collapseTemplate', ['$compile', function ($compile){
+//   return {
+//     restrict: 'E',
+//     replace: true,
+//     template: '<div class="accordian-body collapse"></div>',
+//     link: function(scope, element, attr) {
+//       $(element).attr('id', attr.cid);
+//     }
+//   };
+// }]);
+
+app.directive('unsureTemplate', ['$compile', '$http', '$templateCache', function ($compile, $http, $templateCache) {
   return {
     restrict: 'E',
     replace: true,
     templateUrl: 'partial/unsure_template',
     link: function (scope, element, attr) {
-      scope.unsure_word = attr.text;
-      
+      // var point_list = scope.point_list;
+      var nid = attr.nid;
+      //set click callback with jqlite for this template
+      var text_button = $(element).find('button:first-child');
+      var first_list = $(element).find('li:first-child');
+      var second_list = $(element).find('li:nth-child(2)');
+      var third_list = $(element).find('li:nth-child(3)');
+      $(text_button).html(attr.text);
+      first_list.on('click',function(){
+        // point_list.push(nid);
+        
+        $.ajax({          
+          type: 'POST',
+          url: '/api/dictionary/add/'+attr.category+'/'+attr.nid,
+          dataType: 'json',
+          success: function(data){
+            if(!$(second_list).hasClass('disabled')){
+              $(first_list).addClass('disabled');
+            }
+            $(second_list).removeClass('disabled');
+          },
+          error: function(err){
+            console.log(err);
+          }
+        });
+      });
+      second_list.on('click',function(){
+        // point_list.push({nid:-1});
+
+        $.ajax({          
+          type: 'DELETE',
+          url: '/api/dictionary/remove/'+attr.category+'/'+attr.nid,
+          dataType: 'json',
+          success: function(data){
+            if(!$(first_list).hasClass('disabled')){
+              $(second_list).addClass('disabled');
+            }
+            $(first_list).removeClass('disabled');
+          },
+          error: function(err){
+            console.log(err);
+          }
+        });
+      });
+      third_list.children('a').attr('href','/edit/'+attr.category+'/'+attr.nid);
     }
   };
-});
+}]);

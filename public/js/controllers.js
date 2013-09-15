@@ -90,6 +90,24 @@ function AppCtrl($scope, $http) {
     $scope.user_filters.splice(index, 1);
   }
 
+}
+
+function SearchCtrl($scope, $http) {
+}
+SearchCtrl.$inject = ['$scope', '$http'];
+
+
+function AdminCtrl($scope, $http) {
+}
+AdminCtrl.$inject = ['$scope', '$http'];
+
+
+function ContributeCtrl($scope, $http) {
+}
+ContributeCtrl.$inject = ['$scope', '$http'];
+
+
+function ContactCtrl($scope, $http) {
   $scope.send_comment = function(){
 
   }
@@ -99,23 +117,51 @@ function AppCtrl($scope, $http) {
       return false;
     }
   }
-
 }
-
-function MyCtrl1() {}
-MyCtrl1.$inject = [];
+ContactCtrl.$inject = ['$scope', '$http'];
 
 
-function MyCtrl2() {
+function DictionaryCtrl($scope, $http) {
+  $http({method: 'GET', url: '/api/dictionary/list'}).
+  success(function(data, status, headers, config) {
+    $scope.dictionary = data.dictionary;
+  }).
+  error(function(data, status, headers, config) {
+    $scope.dictionary = null;
+  });
+  
+  $scope.unsure_category = [22,23,24];
+  $scope.point_list = [
+    {id:22, point:0},
+    {id:23, point:0},
+    {id:24, point:0}
+  ];
+  $scope.change_category = function(isEdit){
+    $scope.edit_category = isEdit;
+  }
+
+  $scope.unsure_edit_done = function(){
+    $scope.edit_category = false;
+  }
+
+  $scope.unsure_edit_cancel = function(){
+    $scope.edit_category = false;
+  }
+
+  $scope.get_unsure_template = function(){
+    return ($scope.edit_category == true ? 'partial/edit_unsure_template' : 'partial/unsure_template');
+  }
+
+  // $($scope.categories).each(function(){
+    // // bind click event for dictionary toggle
+
+    // $http({method: 'GET', url: '/api/dictionary/list/'+this.id}).
+    // success(fnuction(data, status, headers, config){
+
+    // }).error(function(data, status, header, config){
+
+    // });
+
+  // });
 }
-MyCtrl2.$inject = [];
-
-
-function SearchCtrl() {
-}
-SearchCtrl.$inject = [];
-
-
-function AdminCtrl() {
-}
-AdminCtrl.$inject = [];
+DictionaryCtrl.$inject = ['$scope', '$http'];

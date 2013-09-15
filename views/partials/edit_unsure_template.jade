@@ -1,0 +1,20 @@
+.btn-group(style='margin:0.5em;')
+	button.btn.btn-default(type='button')
+	button.btn.btn-default.dropdown-toggle(data-toggle='dropdown', type='button')
+		span.caret
+	ul.dropdown-menu(role='menu')
+		li
+			a(href='{{location.absUrl()}}#')
+				input(type='checkbox')
+				|  category A
+		li
+			a(href='{{location.absUrl()}}#')
+				input(type='checkbox')
+				|  category B
+		li.divider
+		li
+			.input-group(style='padding-left:38px;')
+				button.btn.btn-success(type='button', ng-click='unsure_edit_done()')
+					span.glyphicon.glyphicon-ok
+				button.btn.btn-default(type='button', ng-click='unsure_edit_cancel()')
+					span.glyphicon.glyphicon-remove

@@ -1,0 +1,112 @@
+.row
+	.col-lg-12
+		p 感想文產生器的詞庫是共同編輯的，歡迎您幫忙分類：
+		.panel.panel-default
+			.panel-heading(style='line-height:2em;') 尚未分類
+			table.table.table-condensed(style='border-collapse:collapse;')
+				tbody
+					tr.accordion-toggle(data-toggle='collapse', data-target='#unsure')
+						td
+							|還有 
+							span.badge 1 
+							|  個詞彙
+					tr
+						td.hiddenRow
+							div#unsure.accordian-body.collapse
+								unsure-template(data-category='unsure', data-text='asd', data-nid='22')
+								//- ng-repeat='unsure_word in unsure_category'
+									unsure-template(text='asd')
+			.panel-heading
+				.pull-left(style='line-height:2em;') 詞彙一覽
+				button.btn.btn-primary.btn-sm.pull-right 增加詞彙
+				.clearfix
+			table.table.table-condensed(style='border-collapse:collapse;')
+				thead
+					tr
+						th(width='10%') #
+						th(width='25%') 類別
+						th(width='65%') 說明
+				tbody
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun0')
+						td 0
+						td
+							|代名詞 
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							div#noun0.accordian-body.collapse
+								.text-success(style='padding:5px 5px 0 5px') 已收錄：
+								div(style='padding:0 5px 5px 5px') 你、我、他、你們、我們、他們、大家、所有人、有些人、這些人
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun1')
+						td 1
+						td
+							|色情 
+							span.badge 1
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							div#noun1.accordian-body.collapse
+								.text-success(style='padding:5px 5px 0 5px') 已收錄：
+								div(style='padding:0 5px 5px 5px') Fuck
+								.text-warning(style='padding:0 5px 0 5px') 尚未確定：
+								unsure-template(data-category='0', data-text='魚水之歡', data-nid='1')
+								unsure-template(data-category='0', data-text='Fuck you', data-nid='0')
+
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun2')
+						td 2
+						td 髒話
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#noun2.accordian-body.collapse Demo2
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun3')
+						td 3
+						td 政治
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#noun3.accordian-body.collapse Demo3
+					tr.accordion-toggle(data-toggle='collapse', data-target='#noun4')
+						td 4
+						td 人名
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#noun4.accordian-body.collapse Demo4
+			.panel-heading
+				.pull-left(style='line-height:2em;') 句型一覽
+				button.btn.btn-primary.btn-sm.pull-right 增加句型
+				.clearfix
+			table.table.table-condensed(style='border-collapse:collapse;')
+				thead
+					tr
+						th(width='10%') #
+						th(width='25%') 類別
+						th(width='65%') 說明
+				tbody
+					tr.accordion-toggle(data-toggle='collapse', data-target='#syntax1')
+						td 1
+						td 直述句
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#syntax1.accordian-body.collapse	Demo1 
+					tr.accordion-toggle(data-toggle='collapse', data-target='#syntax2')
+						td 2
+						td 詢問句
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#syntax2.accordian-body.collapse Demo2
+					tr.accordion-toggle(data-toggle='collapse', data-target='#syntax3')
+						td 3
+						td 引述句
+						td.text-success Credit Account
+					tr
+						td.hiddenRow(colspan='4')
+							p#syntax3.accordian-body.collapse Demo3
+		p 分類條件：10人以上建議分類
+		p 收錄條件：500人以上同意收錄，或100人以上且有65%同意收錄
+		p 參考資料：
+			a(href='http://edu.ocac.gov.tw/culture/biweekly/99common/') http://edu.ocac.gov.tw/culture/biweekly/99common/
+		a.btn.btn-primary(href='/') 回到首頁
