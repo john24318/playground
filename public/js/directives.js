@@ -86,7 +86,18 @@ app.directive('collapseToggle', ['$compile', function ($compile){
     restrict: 'A',
     link: function(scope, element, attr) {
       $(element).on('click', function(){
-        var targetID = attr.target;
+        var targetID = attr.target; //td.hiddenRow
+        $.ajax({
+          type: 'GET',
+          url: '/api/dictionary/list/' + scope.category.id + '?page=0',
+          dataType: 'json'
+        }).
+        done(function(data){
+          var ret_data = data;
+        }).
+        fail(function(err){
+            console.log(err);
+        });
         $(targetID).html('<div class="text-success" style="padding:5px 5px 0 5px"> 已收錄：</div>');
       });
     }

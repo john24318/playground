@@ -57,6 +57,7 @@ function NavCtrl($scope, $http) {
   $scope.edit_cancel = function(){
     $scope.edit_occupation = false;
   }
+
 }
 
 

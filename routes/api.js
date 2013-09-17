@@ -56,12 +56,27 @@ exports.sentences = function (req, res) {
 
 exports.dictionary = {
   list: function (req, res) {
-    if(req.params.category == undefined){
+    var catID = req.params.category;
+    if(catID == undefined){
       res.json({
         dictionary: dictionary
       });
     }
-    
+
+    res.json({
+      id: catID
+    });
+    /* catID is one of below object list's id
+     * {id:0, text:'色情', class:'warning', comment:'牽涉色情等字眼', unsure_num:1},
+     * {id:1, text:'髒話', class:'danger', comment:'牽涉髒話等字眼', unsure_num:0},
+     * {id:2, text:'政治', class:'default', comment:'牽涉政治等字眼', unsure_num:1},
+     * {id:3, text:'代名詞', class:'default', comment:'牽涉你我他等字眼', unsure_num:0},
+     * {id:4, text:'直述句', comment:'直述句句型', unsure_num:0},
+     * {id:5, text:'詢問句', comment:'詢問句句型', unsure_num:1},
+     * {id:6, text:'引述句', comment:'引述句句型', unsure_num:0}
+     */
+
+
     // var category = req.params.category;
     // var unsure = [
     //   {id:21, text:'aaa', cat:null},
