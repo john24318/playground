@@ -13,47 +13,28 @@
 					tr
 						td.hiddenRow
 							div#unsure.accordian-body.collapse
-								unsure-template(data-category='unsure', data-text='asd', data-nid='22')
-			.panel-default(ng-repeat='category in dictionary.catelog')
-				.panel-heading
-					.pull-left(style='line-height:2em;') {{category.title}}
-					button.btn.btn-primary.btn-sm.pull-right 增加詞彙
-					.clearfix
-				table.table.table-condensed(style='border-collapse:collapse;')
-					thead
-						tr
-							th(width='10%') #
-							th(width='25%') 類別
-							th(width='65%') 說明
-					tbody
-						tr.accordion-toggle(data-toggle='collapse', data-target='#cat_{{category.id}}')
-							td 0
-							td
-								|代名詞 
-							td.text-success Credit Account
-						tr
-							td.hiddenRow(colspan='3')
-								div.accordian-body.collapse(id='cat_{{category.id}}')
-									.text-success(style='padding:5px 5px 0 5px') 已收錄：
-									div(style='padding:0 5px 5px 5px') 你、我、他、你們、我們、他們、大家、所有人、有些人、這些人
-			//- .panel-heading(ng-repeat='category in dictionary.catelog')
-			//- 	.pull-left(style='line-height:2em;') {{category.title}}
-			//- 	button.btn.btn-primary.btn-sm.pull-right 增加詞彙
-			//- 	.clearfix
-			//- table.table.table-condensed(style='border-collapse:collapse;')
-			//- 	thead
-			//- 		tr
-			//- 			th(width='10%') #
-			//- 			th(width='25%') 類別
-			//- 			th(width='65%') 說明
-			//- 	tbody
-			//- 		tr.accordion-toggle(data-toggle='collapse', data-target='#noun0')
-			//- 			td 0
-			//- 			td
-			//- 				|代名詞 
-			//- 			td.text-success Credit Account
-			//- 		tr
-			//- 			td.hiddenRow(colspan='4')
-			//- 				div#noun0.accordian-body.collapse
-			//- 					.text-success(style='padding:5px 5px 0 5px') 已收錄：
-			//- 					div(style='padding:0 5px 5px 5px') 你、我、他、你們、我們、他們、大家、所有人、有些人、這些人
+								//- unsure-template(data-category='unsure', data-text='asd', data-nid='22')
+		.panel.panel-default(ng-repeat='catelog in dictionary.catelog')
+			.panel-heading
+				.pull-left(style='line-height:2em;') {{catelog.title}}
+				button.btn.btn-primary.btn-sm.pull-right 增加詞彙
+				.clearfix
+			table.table.table-condensed(style='border-collapse:collapse;')
+				thead
+					tr
+						th(width='10%') #
+						th(width='25%') 類別
+						th(width='65%') 說明
+				tbody
+					tr.accordion-toggle(data-toggle='collapse', data-target='#cat_{{category.id}}', ng-repeat-start='category in catelog.cat', collapse-toggle)
+						td {{category.id}}
+						td
+							|{{category.text}} 
+							span(ng-if='category.unsure_num')
+								span.badge {{category.unsure_num}} 
+						td.text-success {{category.comment}}
+					tr(ng-repeat-end)
+						td.hiddenRow(colspan='3')
+							div.accordian-body.collapse(id='cat_{{category.id}}')
+								//- .text-success(style='padding:5px 5px 0 5px') 已收錄：
+								//- div(style='padding:0 5px 5px 5px') 你、我、他、你們、我們、他們、大家、所有人、有些人、這些人

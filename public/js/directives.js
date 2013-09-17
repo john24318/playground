@@ -81,16 +81,17 @@ app.directive('ratingHover', function () {
   };
 });
 
-// app.directive('collapseTemplate', ['$compile', function ($compile){
-//   return {
-//     restrict: 'E',
-//     replace: true,
-//     template: '<div class="accordian-body collapse"></div>',
-//     link: function(scope, element, attr) {
-//       $(element).attr('id', attr.cid);
-//     }
-//   };
-// }]);
+app.directive('collapseToggle', ['$compile', function ($compile){
+  return {
+    restrict: 'A',
+    link: function(scope, element, attr) {
+      $(element).on('click', function(){
+        var targetID = attr.target;
+        $(targetID).html('<div class="text-success" style="padding:5px 5px 0 5px"> 已收錄：</div>');
+      });
+    }
+  };
+}]);
 
 app.directive('unsureTemplate', ['$compile', '$http', '$templateCache', function ($compile, $http, $templateCache) {
   return {
