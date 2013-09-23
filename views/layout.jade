@@ -50,7 +50,8 @@ html(ng-app="myApp")
                 a(href='{{location.absUrl()}}#', ng-click='set_occupation()') {{occupation.text}}
               li.divider
               li(ng-switch, on='edit_occupation', stop-event)
-                div(ng-switch-when='true', ng-include='\'partial/edit_template\'')
+                div(ng-switch-when='true')
+                  div(ng-include='\'partial/edit_template\'')
                 a(ng-switch-default, href='{{location.absUrl()}}#', ng-click='add_occupation(true)')
                   span.glyphicon.glyphicon-plus
                   span 增加職業別
